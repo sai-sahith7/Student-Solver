@@ -146,4 +146,5 @@ def aftersignin(inp):
 def redir():
     return redirect("/login/")
 
-app.run()
+if __name__ == "__main__":
+    app.run()
