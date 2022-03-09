@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student</title>
+</head>
+<style>
+    input{
+        margin-top:auto;
+        margin-bottom:auto;
+    }
+    form{
+        text-align:center;
+    }
+    .input-style{
+        margin-top:1rem;
+        margin-bottom:1rem;
+    }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<body>
+<h1 style="text-align:center;margin-top:2.5rem;margin-bottom:2.5rem;" >Fill the details below to ask a question</h1>
+    <form action="{{ inp }}" method="POST" >
+        <div class="input-style"><input type="text" style="text-align:center;" width="75%" height="2rem" required placeholder="Name" name = "Name"><br></div>
+        <div class="input-style"><input type="text" style="text-align:center;" width="75%" height="2rem" required placeholder="Subject" name = "Subject"><br></div>
+        <div class="input-style"><input type="text" style="text-align:center;" width="75%" height="2rem" required placeholder="Contact" name = "Contact"><br></div>
+        <div class="input-style"><input type="text" style="text-align:center;" width="750%" height="2rem" required placeholder="Question" name = "Question"><br></div>
+        <div class="input-style"><input type="submit"></div>
+    </form>
+    <h1 style="text-align:center;margin-top:2.5rem;margin-bottom:2.5rem;" >Your Questions</h1>
+    <table style="text-align:center" class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+        <th scope="col">S.no</th>
+        <th scope="col">Name</th>
+        <th scope="col">Subject</th>
+        <th scope="col">Question</th>
+        <th scope="col">Answer</th>
+        <th scope="col">Solver mail</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in data %}
+    <tr>
+        <th scope="row">{{ i[-1] }}</th>
+        <td>{{ i[0]["Student name"] }}</td>
+        <td>{{ i[0]["Subject"] }}</td>
+        <td>{{ i[0]["Question"] }}</td>
+        <td>{{ i[0]["Answer"] }}</td>
+        <td>{{ i[0]["Solver mail"] }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h1 style="text-align:center;margin-top:2.5rem;margin-bottom:2.5rem;" >Questions asked by others</h1>
+
+<table style="text-align:center" class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+        <th scope="col">S.no</th>
+        <th scope="col">Name</th>
+        <th scope="col">Subject</th>
+        <th scope="col">Question</th>
+        <th scope="col">Answer</th>
+        <th scope="col">Solver mail</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in solved_data %}
+    <tr>
+        <th scope="row">{{ i[-1] }}</th>
+        <td>{{ i[0]["Student name"] }}</td>
+        <td>{{ i[0]["Subject"] }}</td>
+        <td>{{ i[0]["Question"] }}</td>
+        <td>{{ i[0]["Answer"] }}</td>
+        <td>{{ i[0]["Solver mail"] }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+</body>
+</html>
